@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'volleyball_players.apps.VolleyballPlayersConfig', # можно просто volleyball_players
 ]
 
 MIDDLEWARE = [
