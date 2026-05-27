@@ -30,7 +30,7 @@ DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
 BASE_URL = os.getenv('BASE_URL', 'http://localhost:8000')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition

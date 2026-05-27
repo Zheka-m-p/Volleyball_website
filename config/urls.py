@@ -22,3 +22,5 @@ urlpatterns = [
     path('', include('volleyball_players.urls')),
     
 ]
+
+handler404 = 'volleyball_players.views.page_not_found'
