@@ -1,6 +1,7 @@
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, Http404, HttpResponseNotFound
 from django.urls import reverse
+from django.template.defaultfilters import slugify, slice_filter
 
 
 menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
@@ -17,13 +18,14 @@ class Myclass:
 
 def index(request):
     data = {
-        'title': 'Главная страница',
+        'title': 'главная страница',
         'menu': menu,
         'float': 28.56,
         'lst': [1, 2, 'abc', True],
         'set': {1, 2, 3, 2, 5},
         'dict': {'key1': 'value1', 'key2': 'value2'},
-        'obj': Myclass('Марь', 'Ивановна')
+        'obj': Myclass('Марь', 'Ивановна'),
+        'url': slugify('The main page'),
     }
     return render(request, "volleyball_players/index.html", context=data)
 
