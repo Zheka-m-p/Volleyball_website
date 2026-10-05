@@ -3,12 +3,34 @@ from django.http import HttpResponse, Http404, HttpResponseNotFound
 from django.urls import reverse
 
 
+menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
+
+
+class Myclass:
+    def __init__(self, first_name, last_name):
+        self.first_name = first_name
+        self.last_name = last_name
+
+    def get_info(self):
+        return self.first_name + " " + self.last_name
+
+
 def index(request):
-    return render(request, "volleyball_players/index.html")
+    data = {
+        'title': 'Главная страница',
+        'menu': menu,
+        'float': 28.56,
+        'lst': [1, 2, 'abc', True],
+        'set': {1, 2, 3, 2, 5},
+        'dict': {'key1': 'value1', 'key2': 'value2'},
+        'obj': Myclass('Марь', 'Ивановна')
+    }
+    return render(request, "volleyball_players/index.html", context=data)
 
 
 def about(request):
-    return render(request, "volleyball_players/about.html")
+    data = {'title': 'О сайте'}
+    return render(request, "volleyball_players/about.html", data)
 
 
 def categories(request, cat_id):
