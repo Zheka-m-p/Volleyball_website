@@ -25,11 +25,21 @@ data_db = [
 ]
 
 
+cats_db = [
+    {'id': 1, 'name': 'Доигровщики'},
+    {'id': 2, 'name': 'Связующие'},
+    {'id': 3, 'name': 'Диагональные'},
+    {'id': 4, 'name': 'Центральные'},
+    {'id': 5, 'name': 'Либеро'},
+]
+
+
 def index(request):
     data = {
         'title': 'Главная страница',
         'menu': menu,
         'posts': data_db,
+        'cat_selected': 0,   # не обязательная строчка
     }
     return render(request, "volleyball_players/index.html", context=data)
 
@@ -53,6 +63,15 @@ def login(request):
 
 def show_post(request, post_id):
     return HttpResponse(f'Отображение статьи с id = {post_id}')
+
+def show_category(request, cat_id):
+    data = {
+        'title': 'Отображение по рубрикам',
+        'menu': menu,
+        'posts': data_db,
+        'cat_selected': cat_id,
+    }
+    return render(request, 'volleyball_players/index.html', context=data)
 
 
 def page_not_found(request, exception):

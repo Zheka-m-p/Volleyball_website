@@ -1,4 +1,6 @@
 {% load static %}
+{% load volleyball_tags %}
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -8,6 +10,9 @@
 
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- састомный CSS (мелкие добавки) -->    
+    <link rel="stylesheet" href="{% static 'volleyball_players/css/custom.css' %}">
 
     <!-- Favicon (если файла нет — удали эту строку) -->
     <link rel="shortcut icon" href="{% static 'volleyball_players/images/main.ico' %}" type="image/x-icon">
@@ -46,12 +51,13 @@
         <!-- Сайдбар с амплуа -->
         <aside class="col-12 col-lg-3">
             <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action active">Все категории</a>
-                <a href="#" class="list-group-item list-group-item-action">Доигровщики</a>
-                <a href="#" class="list-group-item list-group-item-action">Диагональные</a>
-                <a href="#" class="list-group-item list-group-item-action">Связующие</a>
-                <a href="#" class="list-group-item list-group-item-action">Блокирующие</a>
-                <a href="#" class="list-group-item list-group-item-action">Либеро</a>
+                {% if cat_selected == 0 or cat_selected is None %}
+                    <span class="list-group-item list-group-item-action active">Все категории</span>
+                {% else %}
+                    <a href="{% url 'home' %}" class="list-group-item list-group-item-action">Все категории</a>
+                {% endif %}
+
+                {% show_categories cat_selected %}
             </div>
         </aside>
 

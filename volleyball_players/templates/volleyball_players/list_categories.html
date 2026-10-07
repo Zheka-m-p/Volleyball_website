@@ -1,0 +1,7 @@
+{% for cat in cats %}
+    {% if cat.id == cat_selected %}
+        <span class="list-group-item list-group-item-action active">{{ cat.name }}</span>
+    {% else %}
+        <a href="{% url 'category' cat.id %}" class="list-group-item list-group-item-action">{{ cat.name }}</a>
+    {% endif %}
+{% endfor %}
